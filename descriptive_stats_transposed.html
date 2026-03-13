@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Описательная статистика панели</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 30px; 
+            background-color: #FFFFFF; 
+            color: #333; 
+        }
+        h2 { 
+            color: #0F2D69; 
+            border-bottom: 3px solid #0F2D69; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background-color: #E6E7E8;
+            padding: 12px 15px;
+            border-left: 4px solid #374B9B;
+            margin-bottom: 20px;
+            font-size: 11px;
+        }
+        .info-box strong { color: #0F2D69; }
+        .info-box em { color: #939598; font-size: 10px; }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 65vh;
+            border: 1px solid #C7C8CA;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            font-size: 11px; 
+            min-width: 900px;
+        }
+
+        th { 
+            background-color: #0F2D69; 
+            color: white; 
+            padding: 12px 10px; 
+            text-align: left; 
+            font-weight: bold; 
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        th:first-child { 
+            text-align: left; 
+            min-width: 160px;
+            background-color: #0F2D69;
+            position: sticky;
+            left: 0;
+            z-index: 20;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+        }
+
+        td { 
+            padding: 10px 10px; 
+            border-bottom: 1px solid #C7C8CA; 
+            text-align: right; 
+            white-space: nowrap;
+        }
+
+        td:first-child { 
+            text-align: left; 
+            font-weight: 600; 
+            color: #374B9B;
+            background-color: #E6E7E8;
+            min-width: 160px;
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.05);
+        }
+
+        tr:nth-child(even) td:not(:first-child) { 
+            background-color: #FAFAFA; 
+        }
+        tr:hover td:not(:first-child) { 
+            background-color: #E6E7E8; 
+        }
+
+        .delta-pos { color: #009B64; font-weight: bold; }
+        .delta-neg { color: #EB691E; font-weight: bold; }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 10px;
+            color: #939598;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h2>📋 Описательная статистика панельных данных</h2>
+
+    <div class="info-box">
+        <strong>Период:</strong> 2016–2024 &nbsp;|&nbsp; 
+        <strong>Единица наблюдения:</strong> отрасль × год (ОКВЭД-3, обрабатывающие производства)<br>
+        <strong>Число отраслей:</strong> 38 &nbsp;|&nbsp; 
+        <strong>Всего наблюдений:</strong> 304<br>
+        <em>Примечание: Δ Среднее = Среднее(2022+) − Среднее(до 2022) | Разделитель тысяч: пробел</em>
+    </div>
+
+    <div class="table-container">
+        <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Статистика</th>
+      <th>N (всего)</th>
+      <th>Среднее</th>
+      <th>Ст. откл.</th>
+      <th>Медиана</th>
+      <th>Мин</th>
+      <th>Макс</th>
+      <th>Среднее (до 2022)</th>
+      <th>Среднее (2022+)</th>
+      <th>Δ Среднее</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Санкционная нагрузка</td>
+      <td>304</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.29</td>
+      <td>0.00</td>
+      <td>0.06</td>
+      <td>+0.06</td>
+    </tr>
+    <tr>
+      <td>Отраслевой выпуск (млрд руб.)</td>
+      <td>304</td>
+      <td>430 189 798.68</td>
+      <td>522 095 948.61</td>
+      <td>244 747 172.98</td>
+      <td>1 429 183.40</td>
+      <td>2 727 919 893.47</td>
+      <td>363 865 727.65</td>
+      <td>540 729 917.08</td>
+      <td>+176 864 189.43</td>
+    </tr>
+    <tr>
+      <td>Закупки 44-ФЗ (млрд руб.)</td>
+      <td>304</td>
+      <td>38 859 037 293.33</td>
+      <td>89 484 407 289.80</td>
+      <td>10 651 752 552.06</td>
+      <td>1 176 718 135.12</td>
+      <td>584 341 061 542.32</td>
+      <td>35 965 908 678.31</td>
+      <td>43 680 918 318.36</td>
+      <td>+7 715 009 640.04</td>
+    </tr>
+    <tr>
+      <td>Закупки 223-ФЗ (млрд руб.)</td>
+      <td>304</td>
+      <td>47 821 337 671.94</td>
+      <td>98 289 280 716.41</td>
+      <td>15 727 528 276.15</td>
+      <td>5 359 327 730.14</td>
+      <td>661 857 507 123.90</td>
+      <td>57 417 322 097.06</td>
+      <td>31 828 030 296.76</td>
+      <td>-25 589 291 800.30</td>
+    </tr>
+    <tr>
+      <td>Интенсивность 44-ФЗ (log)</td>
+      <td>304</td>
+      <td>4.02</td>
+      <td>1.99</td>
+      <td>3.67</td>
+      <td>0.55</td>
+      <td>9.35</td>
+      <td>4.16</td>
+      <td>3.79</td>
+      <td>-0.38</td>
+    </tr>
+    <tr>
+      <td>Интенсивность 223-ФЗ (log)</td>
+      <td>304</td>
+      <td>4.80</td>
+      <td>1.81</td>
+      <td>4.65</td>
+      <td>1.35</td>
+      <td>9.41</td>
+      <td>4.99</td>
+      <td>4.49</td>
+      <td>-0.50</td>
+    </tr>
+    <tr>
+      <td>Число заказчиков 44-ФЗ</td>
+      <td>304</td>
+      <td>1 877.34</td>
+      <td>1 744.87</td>
+      <td>1 227.58</td>
+      <td>463.88</td>
+      <td>9 423.00</td>
+      <td>1 961.18</td>
+      <td>1 737.60</td>
+      <td>-223.58</td>
+    </tr>
+    <tr>
+      <td>Число заказчиков 223-ФЗ</td>
+      <td>304</td>
+      <td>739.13</td>
+      <td>553.82</td>
+      <td>483.92</td>
+      <td>162.41</td>
+      <td>2 678.67</td>
+      <td>659.51</td>
+      <td>871.83</td>
+      <td>+212.31</td>
+    </tr>
+    <tr>
+      <td>Число поставщиков 44-ФЗ</td>
+      <td>304</td>
+      <td>1 087.30</td>
+      <td>901.76</td>
+      <td>787.58</td>
+      <td>242.19</td>
+      <td>4 083.00</td>
+      <td>1 162.53</td>
+      <td>961.92</td>
+      <td>-200.61</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    <div class="footer">
+        Сгенерировано: 12.03.2026 15:21
+    </div>
+
+    <script>
+    // Подсветка изменений в столбце Δ Среднее
+    document.querySelectorAll('td:last-child').forEach(cell => {
+        const text = cell.textContent.trim();
+        if (text.startsWith('+') && text !== '—') {
+            cell.classList.add('delta-pos');
+        } else if (text.startsWith('-') && text !== '—') {
+            cell.classList.add('delta-neg');
+        }
+    });
+    </script>
+</body>
+</html>
